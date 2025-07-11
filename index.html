@@ -3,23 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>Deepak Talwar - Enterprise Technology Leader</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Hello World</h1>
-        
-        <div class="navigation">
-            <a href="index.html" class="nav-button active">
-                <span class="nav-icon">🌟</span>
-                <span class="nav-text">Hello World 1</span>
-            </a>
-            <a href="hello-world-2.html" class="nav-button">
-                <span class="nav-icon">✨</span>
-                <span class="nav-text">Hello World 2</span>
-            </a>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">DT</div>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#work" class="nav-link">Work</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
         </div>
-    </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Deepak Talwar</h1>
+            <p class="hero-subtitle">Enterprise technology leader driving transformative platform changes and automation solutions</p>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro" id="intro">
+        <div class="container">
+            <div class="intro-content">
+                <h2 class="intro-title">Transforming enterprise technology through strategic innovation and cross-functional leadership</h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-portrait">
+                    <div class="portrait-placeholder">
+                        <span>DT</span>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h3 class="about-title">About Me</h3>
+                    <p class="about-bio">
+                        I specialize in driving large-scale enterprise platform transformations and automation initiatives. 
+                        With expertise in SAP implementations and cross-functional project management, I help organizations 
+                        navigate complex technological changes while ensuring successful business outcomes.
+                    </p>
+                    <div class="about-links">
+                        <a href="https://www.linkedin.com/in/talwardeepak" class="social-link linkedin" target="_blank">
+                            <span class="social-icon">in</span>
+                            <span class="social-text">LinkedIn</span>
+                        </a>
+                        <a href="#" class="social-link twitter" target="_blank">
+                            <span class="social-icon">𝕏</span>
+                            <span class="social-text">X / Twitter</span>
+                        </a>
+                        <a href="#" class="social-link newsletter">
+                            <span class="social-icon">✉</span>
+                            <span class="social-text">Newsletter</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Work Section -->
+    <section class="work" id="work">
+        <div class="container">
+            <h3 class="section-title">Featured Work</h3>
+            <div class="work-grid">
+                <div class="work-card">
+                    <div class="work-image">
+                        <div class="image-placeholder"></div>
+                    </div>
+                    <div class="work-content">
+                        <h4 class="work-title">Enterprise Platform Transformation</h4>
+                        <p class="work-description">Led global organization through large-scale enterprise platform changes, delivering cross-functional solutions that successfully met business needs.</p>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-image">
+                        <div class="image-placeholder"></div>
+                    </div>
+                    <div class="work-content">
+                        <h4 class="work-title">SAP Automation & Optimization</h4>
+                        <p class="work-description">Utilized strong SAP knowledge to solve complex business problems and drive automation efforts from a business lens ensuring successful outcomes.</p>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-image">
+                        <div class="image-placeholder"></div>
+                    </div>
+                    <div class="work-content">
+                        <h4 class="work-title">Cross-Functional Leadership</h4>
+                        <p class="work-description">Managed multiple teams across functions to deliver specialized business solutions with exemplary professionalism and change management skills.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h3 class="section-title">Get In Touch</h3>
+            <div class="contact-content">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html> 
