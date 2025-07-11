@@ -24,10 +24,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Intersection Observer for fade-in animations
+// Enhanced Intersection Observer for smooth animations
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.15,
+    rootMargin: '0px 0px -100px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -38,10 +38,23 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe elements for animation
+// Enhanced animation system
 document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll('.intro-content, .about-content, .work-card, .contact-content');
-    animateElements.forEach(el => {
+    // Observe sections for entrance animations
+    const sections = document.querySelectorAll('.section-entrance');
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+    
+    // Observe work cards for staggered animations
+    const workCards = document.querySelectorAll('.work-card');
+    workCards.forEach(card => {
+        observer.observe(card);
+    });
+    
+    // Observe other elements for fade-in
+    const fadeElements = document.querySelectorAll('.intro-content, .about-content, .contact-content');
+    fadeElements.forEach(el => {
         el.classList.add('fade-in');
         observer.observe(el);
     });
@@ -80,25 +93,42 @@ if (contactForm) {
     });
 }
 
-// Micro-interactions for social links
+// Enhanced micro-interactions with smooth easing
 document.querySelectorAll('.social-link').forEach(link => {
     link.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-2px) scale(1.02)';
+        this.style.transform = 'translateY(-3px) scale(1.03)';
+        this.style.transition = 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
     });
     
     link.addEventListener('mouseleave', function() {
         this.style.transform = 'translateY(0) scale(1)';
+        this.style.transition = 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
     });
 });
 
-// Work card hover effects
+// Enhanced work card hover effects
 document.querySelectorAll('.work-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-8px) scale(1.02)';
+        this.style.transform = 'translateY(-12px) scale(1.02)';
+        this.style.transition = 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
     });
     
     card.addEventListener('mouseleave', function() {
         this.style.transform = 'translateY(0) scale(1)';
+        this.style.transition = 'all 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+    });
+});
+
+// Enhanced portrait hover effect
+document.querySelectorAll('.portrait-placeholder').forEach(portrait => {
+    portrait.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.08)';
+        this.style.transition = 'all 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+    });
+    
+    portrait.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+        this.style.transition = 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
     });
 });
 
@@ -125,33 +155,35 @@ function typeWriter(element, text, speed = 100) {
 //     typeWriter(heroTitle, originalText, 80);
 // }
 
-// Smooth reveal animation for sections
-function revealOnScroll() {
-    const sections = document.querySelectorAll('section');
+// Enhanced parallax effect with smooth easing
+let ticking = false;
+
+function updateParallax() {
+    const scrolled = window.pageYOffset;
+    const heroBackground = document.querySelector('.hero-background');
+    const heroContent = document.querySelector('.hero-content');
     
-    sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
-        if (sectionTop < windowHeight * 0.75) {
-            section.style.opacity = '1';
-            section.style.transform = 'translateY(0)';
-        }
-    });
+    if (heroBackground) {
+        const yPos = -(scrolled * 0.4);
+        heroBackground.style.transform = `translateY(${yPos}px)`;
+    }
+    
+    if (heroContent) {
+        const yPos = scrolled * 0.2;
+        heroContent.style.transform = `translateY(${yPos}px)`;
+    }
+    
+    ticking = false;
 }
 
-// Initialize section animations
-document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('section:not(.hero)');
-    sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    });
-    
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // Run once on load
-});
+function requestParallaxUpdate() {
+    if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+    }
+}
+
+window.addEventListener('scroll', requestParallaxUpdate, { passive: true });
 
 // Cursor trail effect (optional premium feature)
 class CursorTrail {
